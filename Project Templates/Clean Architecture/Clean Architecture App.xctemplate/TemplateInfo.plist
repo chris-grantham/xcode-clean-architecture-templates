@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Kind</key>
+    <string>Xcode.Xcode3.ProjectTemplateUnitKind</string>
+
+    <key>Identifier</key>
+    <string>com.cleanarch.template.swiftui-app</string>
+
+    <!--
+        Inherits the standard iOS SwiftUI app (correct identifier for Xcode 15+).
+        This ancestor provides the .xcodeproj, build settings, signing,
+        Assets.xcassets, and the storageType / testingSystem option UI.
+
+        We override App.swift and ContentView.swift via top-level Definitions
+        (child definitions take precedence over ancestor definitions for the
+        same node name). New files are added via Nodes + Definitions here and
+        in each option's Units dict.
+
+        Xcode 15 filesystem-synchronized folders: all nodes placed inside the
+        ___PACKAGENAME___ source root are auto-discovered by Xcode — no
+        "Add Files to project…" step required.
+    -->
+    <key>Ancestors</key>
+    <array>
+        <string>com.apple.dt.unit.application.SwiftUI.iOS</string>
+    </array>
+
+    <key>Concrete</key>
+    <true/>
+
+    <key>Description</key>
+    <string>A SwiftUI iOS app pre-organised into Application, Domain, Data, and Presentation layers following hexagonal (Ports &amp; Adapters) architecture. Includes an AppContainer, optional system-service factories, optional networking infrastructure, and optional design tokens. A Makefile and scaffold script are included for adding new features.</string>
+
+    <key>Summary</key>
+    <string>SwiftUI app with clean / hexagonal architecture pre-wired</string>
+
+    <key>SortOrder</key>
+    <string>1</string>
+
+    <key>Platforms</key>
+    <array>
+        <string>com.apple.platform.iphoneos</string>
+    </array>
+
+    <!--
+        ════════════════════════════════════════════════════════════
+        NODES — always-present files added by this template.
+
+        App.swift and ContentView.swift are already added to the node
+        list by the ancestor; we only need to supply Definitions
+        overrides to point at our versions in this bundle.
+        ════════════════════════════════════════════════════════════
+    -->
+    <key>Nodes</key>
+    <array>
+        <!-- Real app entry point (ancestor's source-root version becomes a stub) -->
+        <string>Application/___PACKAGENAME___App.swift</string>
+        <string>Application/AppState.swift</string>
+        <string>Application/AppEnvironment.swift</string>
+        <!-- Real root view (ancestor's source-root version becomes a stub) -->
+        <string>Presentation/ContentView.swift</string>
+        <string>Makefile</string>
+        <string>Scripts/scaffold_feature.sh</string>
+    </array>
+
+    <!--
+        ════════════════════════════════════════════════════════════
+        DEFINITIONS — maps every node name to its source file inside
+        this bundle (Path) and optional sort order.
+
+        Child definitions override ancestor definitions for the same
+        node name, so listing ___PACKAGENAME:identifier___App.swift
+        and ContentView.swift here replaces the ancestor versions.
+        ════════════════════════════════════════════════════════════
+    -->
+    <key>Definitions</key>
+    <dict>
+
+        <!-- Override ancestor's source-root App stub (no declarations — safe to delete) -->
+        <key>___PACKAGENAME:identifier___App.swift</key>
+        <dict>
+            <key>Path</key>
+            <string>___PACKAGENAME___App.swift</string>
+        </dict>
+
+        <!-- Real @main entry point in the Application layer -->
+        <key>Application/___PACKAGENAME___App.swift</key>
+        <dict>
+            <key>Path</key>
+            <string>Application/___PACKAGENAME___App.swift</string>
+        </dict>
+
+        <!-- Override ancestor's source-root ContentView stub (no declarations — safe to delete) -->
+        <key>ContentView.swift</key>
+        <dict>
+            <key>Path</key>
+            <string>ContentView.swift</string>
+        </dict>
+
+        <!-- Real root view in the Presentation layer -->
+        <key>Presentation/ContentView.swift</key>
+        <dict>
+            <key>Path</key>
+            <string>Presentation/ContentView.swift</string>
+        </dict>
+
+        <!-- Application layer -->
+        <key>Application/AppState.swift</key>
+        <dict>
+            <key>Path</key>
+            <string>Application/AppState.swift</string>
+        </dict>
+        <key>Application/AppEnvironment.swift</key>
+        <dict>
+            <key>Path</key>
+            <string>Application/AppEnvironment.swift</string>
+        </dict>
+
+        <!-- Scaffold tooling -->
+        <key>Makefile</key>
+        <dict>
+            <key>Path</key>
+            <string>Makefile</string>
+        </dict>
+        <key>Scripts/scaffold_feature.sh</key>
+        <dict>
+            <key>Path</key>
+            <string>Scripts/scaffold_feature.sh</string>
+        </dict>
+
+    </dict>
+
+    <!--
+        ════════════════════════════════════════════════════════════
+        OPTIONS — user selections in the New Project dialog.
+
+        Each option uses a Units dict whose values are
+        {Nodes, Definitions} dicts — the format Xcode requires so it
+        knows which source file in this bundle to copy for each node.
+        ════════════════════════════════════════════════════════════
+    -->
+    <key>Options</key>
+    <array>
+
+        <!-- ─────────────────────────────────────────────────────
+             1. System Services → selects AppContainer variant
+             ───────────────────────────────────────────────────── -->
+        <dict>
+            <key>Identifier</key>
+            <string>services</string>
+            <key>Name</key>
+            <string>System Services:</string>
+            <key>Description</key>
+            <string>Protocol-wrapped system service factories on the AppContainer. Services use singleton lifetime but non-singleton access via factory methods.</string>
+            <key>Type</key>
+            <string>popup</string>
+            <key>Default</key>
+            <string>None</string>
+            <key>Values</key>
+            <array>
+                <string>None</string>
+                <string>AVAudioSession</string>
+                <string>CLLocationManager</string>
+                <string>WKWebsiteDataStore</string>
+                <string>All Services</string>
+            </array>
+            <key>Units</key>
+            <dict>
+                <key>None</key>
+                <dict>
+                    <key>Nodes</key>
+                    <array>
+                        <string>Application/___PACKAGENAME___AppContainer.swift</string>
+                    </array>
+                    <key>Definitions</key>
+                    <dict>
+                        <key>Application/___PACKAGENAME___AppContainer.swift</key>
+                        <dict>
+                            <key>Path</key>
+                            <string>Application/None/___PACKAGENAME___AppContainer.swift</string>
+                        </dict>
+                    </dict>
+                </dict>
+                <key>AVAudioSession</key>
+                <dict>
+                    <key>Nodes</key>
+                    <array>
+                        <string>Application/___PACKAGENAME___AppContainer.swift</string>
+                    </array>
+                    <key>Definitions</key>
+                    <dict>
+                        <key>Application/___PACKAGENAME___AppContainer.swift</key>
+                        <dict>
+                            <key>Path</key>
+                            <string>Application/AVAudioSession/___PACKAGENAME___AppContainer.swift</string>
+                        </dict>
+                    </dict>
+                </dict>
+                <key>CLLocationManager</key>
+                <dict>
+                    <key>Nodes</key>
+                    <array>
+                        <string>Application/___PACKAGENAME___AppContainer.swift</string>
+                    </array>
+                    <key>Definitions</key>
+                    <dict>
+                        <key>Application/___PACKAGENAME___AppContainer.swift</key>
+                        <dict>
+                            <key>Path</key>
+                            <string>Application/CLLocationManager/___PACKAGENAME___AppContainer.swift</string>
+                        </dict>
+                    </dict>
+                </dict>
+                <key>WKWebsiteDataStore</key>
+                <dict>
+                    <key>Nodes</key>
+                    <array>
+                        <string>Application/___PACKAGENAME___AppContainer.swift</string>
+                    </array>
+                    <key>Definitions</key>
+                    <dict>
+                        <key>Application/___PACKAGENAME___AppContainer.swift</key>
+                        <dict>
+                            <key>Path</key>
+                            <string>Application/WKWebsiteDataStore/___PACKAGENAME___AppContainer.swift</string>
+                        </dict>
+                    </dict>
+                </dict>
+                <key>All Services</key>
+                <dict>
+                    <key>Nodes</key>
+                    <array>
+                        <string>Application/___PACKAGENAME___AppContainer.swift</string>
+                    </array>
+                    <key>Definitions</key>
+                    <dict>
+                        <key>Application/___PACKAGENAME___AppContainer.swift</key>
+                        <dict>
+                            <key>Path</key>
+                            <string>Application/AllServices/___PACKAGENAME___AppContainer.swift</string>
+                        </dict>
+                    </dict>
+                </dict>
+            </dict>
+        </dict>
+
+        <!-- ─────────────────────────────────────────────────────
+             2. Networking layer
+             ───────────────────────────────────────────────────── -->
+        <dict>
+            <key>Identifier</key>
+            <string>includeNetworking</string>
+            <key>Name</key>
+            <string>Include Networking Layer</string>
+            <key>Description</key>
+            <string>Adds NetworkSession protocol, URLSession conformance, and NetworkSessionConfiguration to Data/Network.</string>
+            <key>Type</key>
+            <string>checkbox</string>
+            <key>Default</key>
+            <string>true</string>
+            <key>Units</key>
+            <dict>
+                <key>true</key>
+                <dict>
+                    <key>Nodes</key>
+                    <array>
+                        <string>Data/Network/NetworkSession.swift</string>
+                        <string>Data/Network/___PACKAGENAME___NetworkSessionConfiguration.swift</string>
+                    </array>
+                    <key>Definitions</key>
+                    <dict>
+                        <key>Data/Network/NetworkSession.swift</key>
+                        <dict>
+                            <key>Path</key>
+                            <string>Data/Network/NetworkSession.swift</string>
+                        </dict>
+                        <key>Data/Network/___PACKAGENAME___NetworkSessionConfiguration.swift</key>
+                        <dict>
+                            <key>Path</key>
+                            <string>Data/Network/___PACKAGENAME___NetworkSessionConfiguration.swift</string>
+                        </dict>
+                    </dict>
+                </dict>
+            </dict>
+        </dict>
+
+        <!-- ─────────────────────────────────────────────────────
+             3. Design tokens
+             ───────────────────────────────────────────────────── -->
+        <dict>
+            <key>Identifier</key>
+            <string>includeDesignTokens</string>
+            <key>Name</key>
+            <string>Include Design Tokens</string>
+            <key>Description</key>
+            <string>Adds Spacing, Typography, and semantic Color token definitions to Presentation/DesignTokens.</string>
+            <key>Type</key>
+            <string>checkbox</string>
+            <key>Default</key>
+            <string>true</string>
+            <key>Units</key>
+            <dict>
+                <key>true</key>
+                <dict>
+                    <key>Nodes</key>
+                    <array>
+                        <string>Presentation/DesignTokens/___PACKAGENAME___DesignTokens.swift</string>
+                    </array>
+                    <key>Definitions</key>
+                    <dict>
+                        <key>Presentation/DesignTokens/___PACKAGENAME___DesignTokens.swift</key>
+                        <dict>
+                            <key>Path</key>
+                            <string>Presentation/DesignTokens/___PACKAGENAME___DesignTokens.swift</string>
+                        </dict>
+                    </dict>
+                </dict>
+            </dict>
+        </dict>
+
+        <!-- ─────────────────────────────────────────────────────
+             4. Swift language version + concurrency checking
+             ───────────────────────────────────────────────────── -->
+        <dict>
+            <key>Identifier</key>
+            <string>swiftConcurrency</string>
+            <key>Name</key>
+            <string>Swift &amp; Concurrency:</string>
+            <key>Description</key>
+            <string>Swift 6 enforces full data-race safety at compile time. Targeted is the recommended on-ramp for teams migrating existing code. Minimal adds only the most obvious concurrency diagnostics.</string>
+            <key>Type</key>
+            <string>popup</string>
+            <key>Default</key>
+            <string>swift6</string>
+            <key>Values</key>
+            <array>
+                <string>swift6</string>
+                <string>swift5Complete</string>
+                <string>swift5Targeted</string>
+                <string>swift5Minimal</string>
+            </array>
+            <key>ValueTitles</key>
+            <array>
+                <string>Swift 6 (full data-race safety)</string>
+                <string>Swift 5 — Complete concurrency</string>
+                <string>Swift 5 — Targeted concurrency</string>
+                <string>Swift 5 — Minimal concurrency</string>
+            </array>
+            <key>Units</key>
+            <dict>
+                <!-- Swift 6 language mode: complete concurrency is implicit. -->
+                <key>swift6</key>
+                <dict>
+                    <key>Nodes</key>
+                    <array/>
+                    <key>Targets</key>
+                    <array>
+                        <dict>
+                            <key>SharedSettings</key>
+                            <dict>
+                                <key>SWIFT_VERSION</key>
+                                <string>6.0</string>
+                            </dict>
+                        </dict>
+                    </array>
+                </dict>
+                <!-- Swift 5 + complete: same data-race diagnostics as Swift 6
+                     without the language-level breaking changes. -->
+                <key>swift5Complete</key>
+                <dict>
+                    <key>Nodes</key>
+                    <array/>
+                    <key>Targets</key>
+                    <array>
+                        <dict>
+                            <key>SharedSettings</key>
+                            <dict>
+                                <key>SWIFT_VERSION</key>
+                                <string>5.0</string>
+                                <key>SWIFT_STRICT_CONCURRENCY</key>
+                                <string>complete</string>
+                            </dict>
+                        </dict>
+                    </array>
+                </dict>
+                <!-- Swift 5 + targeted: checks actor-isolated types and
+                     Sendable conformances you've already adopted. -->
+                <key>swift5Targeted</key>
+                <dict>
+                    <key>Nodes</key>
+                    <array/>
+                    <key>Targets</key>
+                    <array>
+                        <dict>
+                            <key>SharedSettings</key>
+                            <dict>
+                                <key>SWIFT_VERSION</key>
+                                <string>5.0</string>
+                                <key>SWIFT_STRICT_CONCURRENCY</key>
+                                <string>targeted</string>
+                            </dict>
+                        </dict>
+                    </array>
+                </dict>
+                <!-- Swift 5 + minimal: only the most obvious violations. -->
+                <key>swift5Minimal</key>
+                <dict>
+                    <key>Nodes</key>
+                    <array/>
+                    <key>Targets</key>
+                    <array>
+                        <dict>
+                            <key>SharedSettings</key>
+                            <dict>
+                                <key>SWIFT_VERSION</key>
+                                <string>5.0</string>
+                                <key>SWIFT_STRICT_CONCURRENCY</key>
+                                <string>minimal</string>
+                            </dict>
+                        </dict>
+                    </array>
+                </dict>
+            </dict>
+        </dict>
+
+        <!-- ─────────────────────────────────────────────────────
+             5. Default actor isolation
+             ───────────────────────────────────────────────────── -->
+        <dict>
+            <key>Identifier</key>
+            <string>defaultActorIsolation</string>
+            <key>Name</key>
+            <string>Default Actor Isolation:</string>
+            <key>Description</key>
+            <string>@MainActor makes every declaration in the module implicitly main-actor-isolated unless explicitly annotated otherwise. Useful for pure SwiftUI apps where nearly all code is UI work. Keep nonisolated if your Domain and Data layers must be callable from background actors.</string>
+            <key>Type</key>
+            <string>popup</string>
+            <key>Default</key>
+            <string>nonisolated</string>
+            <key>Values</key>
+            <array>
+                <string>nonisolated</string>
+                <string>mainActor</string>
+            </array>
+            <key>ValueTitles</key>
+            <array>
+                <string>nonisolated (explicit — recommended)</string>
+                <string>@MainActor (entire module implicit)</string>
+            </array>
+            <key>Units</key>
+            <dict>
+                <!-- nonisolated is the compiler default; no setting needed. -->
+                <key>nonisolated</key>
+                <dict>
+                    <key>Nodes</key>
+                    <array/>
+                </dict>
+                <key>mainActor</key>
+                <dict>
+                    <key>Nodes</key>
+                    <array/>
+                    <key>Targets</key>
+                    <array>
+                        <dict>
+                            <key>SharedSettings</key>
+                            <dict>
+                                <key>SWIFT_DEFAULT_ACTOR_ISOLATION</key>
+                                <string>MainActor</string>
+                            </dict>
+                        </dict>
+                    </array>
+                </dict>
+            </dict>
+        </dict>
+
+        <!-- ─────────────────────────────────────────────────────
+             6. Treat warnings as errors
+             ───────────────────────────────────────────────────── -->
+        <dict>
+            <key>Identifier</key>
+            <string>warningsAsErrors</string>
+            <key>Name</key>
+            <string>Warnings as Errors</string>
+            <key>Description</key>
+            <string>Promotes all Swift and C/Objective-C compiler warnings to errors. Recommended for new codebases — keeps warnings from accumulating. Disable if you rely on third-party dependencies that generate warnings you cannot fix.</string>
+            <key>Type</key>
+            <string>checkbox</string>
+            <key>Default</key>
+            <string>true</string>
+            <key>Units</key>
+            <dict>
+                <key>true</key>
+                <dict>
+                    <key>Nodes</key>
+                    <array/>
+                    <key>Targets</key>
+                    <array>
+                        <dict>
+                            <key>SharedSettings</key>
+                            <dict>
+                                <key>SWIFT_TREAT_WARNINGS_AS_ERRORS</key>
+                                <string>YES</string>
+                                <key>GCC_TREAT_WARNINGS_AS_ERRORS</key>
+                                <string>YES</string>
+                            </dict>
+                        </dict>
+                    </array>
+                </dict>
+            </dict>
+        </dict>
+
+    </array>
+
+</dict>
+</plist>
