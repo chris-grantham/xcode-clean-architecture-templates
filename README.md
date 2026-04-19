@@ -11,44 +11,13 @@ Xcode **file templates** and a **project template** for iOS 17+ apps built on cl
 
 ## Architecture Overview
 
-```mermaid
-graph TD
-    subgraph Presentation["🟣 Presentation"]
-        V[FeatureView]
-        VM[FeatureViewModel]
-        DT[DesignTokens]
-    end
+![Architecture Overview](architecture.svg)
 
-    subgraph Application["🔵 Application"]
-        APP["@main App"]
-        AC[AppContainer]
-        AS[AppState]
-        AE[AppEnvironment]
-    end
-
-    subgraph Domain["🟠 Domain"]
-        M[Feature domain model]
-        P["FeaturePort (protocol)"]
-    end
-
-    subgraph Data["🟢 Data"]
-        A["FeatureAdapter (class)"]
-        NS[NetworkSession]
-        NSC[NetworkSessionConfiguration]
-    end
-
-    APP --> AC
-    AC --> AS
-    AC --> VM
-    V --> VM
-    VM --> P
-    P -.->|"implemented by"| A
-    A --> NS
-    NS --> NSC
-    M --> V
-    M --> VM
-    AC -.->|"injects"| A
-```
+> **Reading the diagram:**  
+> Solid arrows (→) are structural dependencies — one type holds a reference to another.  
+> Dashed arrows (⇢) are dependency/realization relationships — `realises` is protocol conformance; `creates` is a factory call; `Uses` is an optional infrastructure dependency (not all adapters use NetworkSession).  
+> The `.environment(appState)` arrow shows SwiftUI's environment injection — `@main App` seeds `AppState` into the view hierarchy via `.environment()`; views consume it via `@Environment(AppState.self)`.  
+> Dashed-border boxes (DesignTokens, AppEnvironment) are optional components.
 
 ### Dependency rule
 
