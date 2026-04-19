@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Kind</key>
+    <string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
+
+    <key>Description</key>
+    <string>A hexagonal architecture Repository pair: a Port (protocol) defining the domain boundary, and an Adapter (concrete class) implementing it in the Data layer. Name the file after the domain entity (e.g. "User" → UserPort + UserAdapter). Split into separate files once the implementation grows.</string>
+
+    <key>Summary</key>
+    <string>Hexagonal Port (protocol) + Adapter (implementation) for the Data layer</string>
+
+    <key>SortOrder</key>
+    <string>30</string>
+
+    <key>DefaultCompletionName</key>
+    <string>My</string>
+
+    <key>MainTemplateFile</key>
+    <string>___FILEBASENAME___Repository.swift</string>
+
+    <key>AllowedTypes</key>
+    <array>
+        <string>public.swift-source</string>
+    </array>
+
+    <key>SupportsSwiftPackage</key>
+    <true/>
+
+    <key>Platforms</key>
+    <array/>
+
+    <key>Image</key>
+    <dict>
+        <key>FileTypeIcon</key>
+        <string>swift</string>
+    </dict>
+</dict>
+</plist>

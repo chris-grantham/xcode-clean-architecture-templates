@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Kind</key>
+    <string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
+
+    <key>Description</key>
+    <string>Infrastructure-layer configuration value type for a NetworkSession. Provides base URL, timeout, default headers, cache policy, and a URLRequest builder. Pair with NetworkSession and inject via the AppContainer.</string>
+
+    <key>Summary</key>
+    <string>NetworkSession configuration struct with URLRequest builder</string>
+
+    <key>SortOrder</key>
+    <string>50</string>
+
+    <key>DefaultCompletionName</key>
+    <string>App</string>
+
+    <key>MainTemplateFile</key>
+    <string>___FILEBASENAME___NetworkSessionConfiguration.swift</string>
+
+    <key>AllowedTypes</key>
+    <array>
+        <string>public.swift-source</string>
+    </array>
+
+    <key>SupportsSwiftPackage</key>
+    <true/>
+
+    <key>Platforms</key>
+    <array/>
+
+    <key>Image</key>
+    <dict>
+        <key>FileTypeIcon</key>
+        <string>swift</string>
+    </dict>
+</dict>
+</plist>

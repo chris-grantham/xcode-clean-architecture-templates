@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Kind</key>
+    <string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
+
+    <key>Description</key>
+    <string>A clean-architecture AppContainer that holds app-wide state and provides scoped dependency factories. Optional protocol-wrapped system services follow a singleton-lifetime / non-singleton-access pattern.</string>
+
+    <key>Summary</key>
+    <string>Application-layer dependency container with optional system service factories</string>
+
+    <key>SortOrder</key>
+    <string>10</string>
+
+    <key>DefaultCompletionName</key>
+    <string>App</string>
+
+    <key>MainTemplateFile</key>
+    <string>None/___FILEBASENAME___AppContainer.swift</string>
+
+    <key>AllowedTypes</key>
+    <array>
+        <string>public.swift-source</string>
+    </array>
+
+    <key>SupportsSwiftPackage</key>
+    <true/>
+
+    <key>Platforms</key>
+    <array/>
+
+    <key>Image</key>
+    <dict>
+        <key>FileTypeIcon</key>
+        <string>swift</string>
+    </dict>
+
+    <key>Options</key>
+    <array>
+        <dict>
+            <key>Identifier</key>
+            <string>services</string>
+            <key>Name</key>
+            <string>System Services:</string>
+            <key>Description</key>
+            <string>Include protocol-wrapped system service factories on the container. Each service uses singleton lifetime but is accessed via a factory method (not a global singleton).</string>
+            <key>Type</key>
+            <string>popup</string>
+            <key>Values</key>
+            <array>
+                <string>None</string>
+                <string>AVAudioSession</string>
+                <string>CLLocationManager</string>
+                <string>WKWebsiteDataStore</string>
+                <string>All Services</string>
+            </array>
+            <key>Default</key>
+            <string>None</string>
+            <key>MainTemplateFiles</key>
+            <dict>
+                <key>None</key>
+                <string>None/___FILEBASENAME___AppContainer.swift</string>
+                <key>AVAudioSession</key>
+                <string>AVAudioSession/___FILEBASENAME___AppContainer.swift</string>
+                <key>CLLocationManager</key>
+                <string>CLLocationManager/___FILEBASENAME___AppContainer.swift</string>
+                <key>WKWebsiteDataStore</key>
+                <string>WKWebsiteDataStore/___FILEBASENAME___AppContainer.swift</string>
+                <key>All Services</key>
+                <string>AllServices/___FILEBASENAME___AppContainer.swift</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>

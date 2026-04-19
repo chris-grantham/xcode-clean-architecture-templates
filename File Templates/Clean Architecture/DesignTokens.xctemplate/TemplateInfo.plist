@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Kind</key>
+    <string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
+
+    <key>Description</key>
+    <string>Presentation-layer design token definitions. Choose the token scope to generate: Spacing (8pt grid), Typography (size + weight scales), Color (semantic SwiftUI Color extensions backed by Asset Catalogue entries), or All Tokens combined.</string>
+
+    <key>Summary</key>
+    <string>Design system tokens: Spacing, Typography, Color, or all combined</string>
+
+    <key>SortOrder</key>
+    <string>60</string>
+
+    <key>DefaultCompletionName</key>
+    <string>App</string>
+
+    <key>MainTemplateFile</key>
+    <string>Spacing/___FILEBASENAME___DesignTokens.swift</string>
+
+    <key>AllowedTypes</key>
+    <array>
+        <string>public.swift-source</string>
+    </array>
+
+    <key>SupportsSwiftPackage</key>
+    <true/>
+
+    <key>Platforms</key>
+    <array/>
+
+    <key>Image</key>
+    <dict>
+        <key>FileTypeIcon</key>
+        <string>swift</string>
+    </dict>
+
+    <key>Options</key>
+    <array>
+        <dict>
+            <key>Identifier</key>
+            <string>tokenScope</string>
+            <key>Name</key>
+            <string>Token Scope:</string>
+            <key>Description</key>
+            <string>Which category of design tokens to generate.</string>
+            <key>Type</key>
+            <string>popup</string>
+            <key>Values</key>
+            <array>
+                <string>Spacing</string>
+                <string>Typography</string>
+                <string>Color</string>
+                <string>All Tokens</string>
+            </array>
+            <key>Default</key>
+            <string>All Tokens</string>
+            <key>MainTemplateFiles</key>
+            <dict>
+                <key>Spacing</key>
+                <string>Spacing/___FILEBASENAME___DesignTokens.swift</string>
+                <key>Typography</key>
+                <string>Typography/___FILEBASENAME___DesignTokens.swift</string>
+                <key>Color</key>
+                <string>Color/___FILEBASENAME___DesignTokens.swift</string>
+                <key>All Tokens</key>
+                <string>AllTokens/___FILEBASENAME___DesignTokens.swift</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>

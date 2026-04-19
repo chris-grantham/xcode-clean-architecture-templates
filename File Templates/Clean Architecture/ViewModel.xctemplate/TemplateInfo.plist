@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Kind</key>
+    <string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
+
+    <key>Description</key>
+    <string>A Presentation-layer ViewModel using the @Observable macro (iOS 17+ / macOS 14+). Runs on the MainActor. Add state properties, inject dependencies through init, and expose action methods for the View to call.</string>
+
+    <key>Summary</key>
+    <string>@Observable ViewModel for the Presentation layer (iOS 17+ / macOS 14+)</string>
+
+    <key>SortOrder</key>
+    <string>20</string>
+
+    <key>DefaultCompletionName</key>
+    <string>My</string>
+
+    <key>MainTemplateFile</key>
+    <string>___FILEBASENAME___ViewModel.swift</string>
+
+    <key>AllowedTypes</key>
+    <array>
+        <string>public.swift-source</string>
+    </array>
+
+    <key>SupportsSwiftPackage</key>
+    <true/>
+
+    <key>Platforms</key>
+    <array/>
+
+    <key>Image</key>
+    <dict>
+        <key>FileTypeIcon</key>
+        <string>swift</string>
+    </dict>
+</dict>
+</plist>

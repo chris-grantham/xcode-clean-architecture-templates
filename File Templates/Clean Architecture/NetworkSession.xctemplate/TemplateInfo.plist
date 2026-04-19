@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Kind</key>
+    <string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
+
+    <key>Description</key>
+    <string>Infrastructure-layer NetworkSession port: a Sendable protocol that abstracts URLSession for dependency injection and testing. Includes a URLSession retroactive conformance and a typed NetworkSessionError enum.</string>
+
+    <key>Summary</key>
+    <string>NetworkSession protocol + URLSession conformance for the Infrastructure layer</string>
+
+    <key>SortOrder</key>
+    <string>40</string>
+
+    <key>DefaultCompletionName</key>
+    <string>App</string>
+
+    <key>MainTemplateFile</key>
+    <string>___FILEBASENAME___NetworkSession.swift</string>
+
+    <key>AllowedTypes</key>
+    <array>
+        <string>public.swift-source</string>
+    </array>
+
+    <key>SupportsSwiftPackage</key>
+    <true/>
+
+    <key>Platforms</key>
+    <array/>
+
+    <key>Image</key>
+    <dict>
+        <key>FileTypeIcon</key>
+        <string>swift</string>
+    </dict>
+</dict>
+</plist>

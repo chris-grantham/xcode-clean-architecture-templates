@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+  <!-- Background: rounded square, Domain layer orange -->
+  <rect width="96" height="96" rx="20" ry="20" fill="#FF9500"/>
+
+  <!-- Port (protocol) — left hexagon shape suggesting an interface socket -->
+  <polygon points="28,20 40,20 46,30 40,40 28,40 22,30"
+           fill="none" stroke="white" stroke-width="4.5"
+           stroke-linejoin="round"/>
+
+  <!-- Adapter (implementation) — right rounded rect suggesting concrete class -->
+  <rect x="50" y="48" width="30" height="28" rx="6" ry="6"
+        fill="none" stroke="white" stroke-width="4.5"/>
+
+  <!-- Connecting arrow from Port to Adapter -->
+  <line x1="48" y1="30" x2="72" y2="30" stroke="white" stroke-width="3.5"
+        stroke-linecap="round" stroke-dasharray="5,4"/>
+  <line x1="72" y1="30" x2="72" y2="48" stroke="white" stroke-width="3.5"
+        stroke-linecap="round" stroke-dasharray="5,4"/>
+  <polyline points="66,43 72,49 78,43" fill="none" stroke="white" stroke-width="3.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Adapter fill lines -->
+  <line x1="58" y1="59" x2="72" y2="59" stroke="white" stroke-width="3"
+        stroke-linecap="round"/>
+  <line x1="58" y1="67" x2="68" y2="67" stroke="white" stroke-width="3"
+        stroke-linecap="round"/>
+</svg>
