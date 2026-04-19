@@ -11,52 +11,13 @@ Xcode **file templates** and a **project template** for iOS 17+ apps built on cl
 
 ## Architecture Overview
 
-```mermaid
-graph TD
-    subgraph Presentation["🟣 Presentation"]
-        V[FeatureView]
-        VM["FeatureViewModel (@Observable · @MainActor)"]
-        DT[DesignTokens]
-    end
-
-    subgraph Application["🔵 Application"]
-        APP["@main App"]
-        AC[AppContainer]
-        AS[AppState]
-        AE[AppEnvironment]
-    end
-
-    subgraph Domain["🟠 Domain"]
-        M[Feature domain model]
-        P["«port» FeaturePort"]
-    end
-
-    subgraph Data["🟢 Data"]
-        A["«adapter» FeatureAdapter"]
-        subgraph Infrastructure["⚙️ Infrastructure"]
-            NS[NetworkSession]
-            NSC[NetworkSessionConfiguration]
-        end
-    end
-
-    APP --> AC
-    APP -->|".environment(appState)"| V
-    AC --> AS
-    AC -.->|"«creates»"| VM
-    V -->|"@State"| VM
-    VM --> P
-    A -.->|"«realizes»"| P
-    A -.->|"«uses»"| NS
-    NS --> NSC
-    M --> V
-    M --> VM
-    AC -.->|"wires"| A
-```
+![Architecture Overview](architecture.svg)
 
 > **Reading the diagram:**  
 > Solid arrows (→) are structural dependencies — one type holds a reference to another.  
-> Dashed arrows (⇢) are UML dependency/realization relationships — `«realizes»` is protocol conformance; `«creates»` is a factory call; `«uses»` is an optional infrastructure dependency (not all adapters use NetworkSession).  
-> The `.environment(appState)` arrow shows SwiftUI's environment injection — `@main App` seeds `AppState` into the view hierarchy via `.environment()`; views consume it via `@Environment(AppState.self)`.
+> Dashed arrows (⇢) are dependency/realization relationships — `realises` is protocol conformance; `creates` is a factory call; `Uses` is an optional infrastructure dependency (not all adapters use NetworkSession).  
+> The `.environment(appState)` arrow shows SwiftUI's environment injection — `@main App` seeds `AppState` into the view hierarchy via `.environment()`; views consume it via `@Environment(AppState.self)`.  
+> Dashed-border boxes (DesignTokens, AppEnvironment) are optional components.
 
 ### Dependency rule
 
